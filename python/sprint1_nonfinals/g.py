@@ -14,7 +14,8 @@ def to_binary(number: int) -> str:
     """
 
     b = ''
-
+    if number == 0:
+        return 0
     while number > 0:
         b = str(number % 2) + b
         number = number // 2
