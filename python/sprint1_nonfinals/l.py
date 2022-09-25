@@ -1,22 +1,16 @@
 from typing import Tuple
+from string import ascii_lowercase as a
 
 
 def get_excessive_letter(shorter: str, longer: str) -> str:
-    li = []
-    a = sorted(list(shorter))
-    b = sorted(list(longer))
-    print(a)
-    print(b)
-    if a[0] != b[0]:
-        x = a[::-1]
-        x.append('0')
-        a = x[::-1]
-    else:
-        a.append('0')
-    for i in range(len(b)):
-        if a[i] != b[i]:
-            li.append(b[i])
-    return li
+    shorter += a
+    longer += a
+    p = list(a)
+    result = ''
+    for i in range(len(a)):
+        if shorter.count(p[i]) != longer.count(p[i]):
+            result += p[i]
+    return result
 
 
 def read_input() -> Tuple[str, str]:
