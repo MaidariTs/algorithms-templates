@@ -1,24 +1,29 @@
-# ID 70975632
+# ID 71031750
 def sleight_of_hand(k: int, matrix: str) -> int:
     k = k*2
-    li = []
+    dict_count = {}
     count = 0
-    for i in range(1, 10):
-        li.append(matrix.count(str(i)))
-    for p in range(9):
-        if li[p] <= k and li[p] != 0:
+    for i in matrix:
+        if i in dict_count:
+            dict_count[i] += 1
+        else:
+            dict_count[i] = 1
+    val = list(dict_count.values())
+    for i in range(len(val)):
+        if val[i] <= k:
             count += 1
-    print(count)
+    return count
 
 
 def read_input():
     k = int(input())
     m = ''
     for i in range(4):
-        m += str(input())
+        m += input()
     matrix = m.replace('.', '')
     return k, matrix
 
 
-k, matrix = read_input()
-sleight_of_hand(k, matrix)
+if __name__ == '__main__':
+    k, matrix = read_input()
+    print(sleight_of_hand(k, matrix))

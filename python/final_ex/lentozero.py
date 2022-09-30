@@ -1,29 +1,30 @@
-# ID 70942661
+# ID 71029123
 from typing import List
 
 
 def lentozero(n: int, numbers: List[str], reverse: List[str]) -> str:
     count = n
-    result = []
-    reverse_res = []
+    result = [None] * n
+
     for i in range(n):
         if numbers[i] == '0':
             count = 0
-            result.append(0)
+            result[i] = 0
         else:
             count += 1
-            result.append(count)
+            result[i] = count
 
     for i in range(n):
         if reverse[i] == '0':
             count = 0
-            reverse_res.append(0)
+            reverse[i] = 0
         else:
             count += 1
-            reverse_res.append(count)
-    y = reversed(tuple(reverse_res))
+            reverse[i] = count
 
-    print(*map(min, zip(result, y)))
+    y = reverse[::-1]
+    final = " ".join(map(str, list(map(min, tuple(zip(result, y))))))
+    return final
 
 
 def read_input():
@@ -33,5 +34,6 @@ def read_input():
     return n, numbers, reverse
 
 
-n, numbers, reverse = read_input()
-lentozero(n, numbers, reverse)
+if __name__ == '__main__':
+    n, numbers, reverse = read_input()
+    print(lentozero(n, numbers, reverse))
