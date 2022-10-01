@@ -1,39 +1,31 @@
-# ID 71029123
+# ID 71054567
 from typing import List
+import sys
 
 
-def lentozero(n: int, numbers: List[str], reverse: List[str]) -> str:
+def lentozero(n: int, numbers: List[str]) -> str:
     count = n
-    result = [None] * n
 
     for i in range(n):
         if numbers[i] == '0':
             count = 0
-            result[i] = 0
+            numbers[i] = 0
         else:
             count += 1
-            result[i] = count
-
-    for i in range(n):
-        if reverse[i] == '0':
-            count = 0
-            reverse[i] = 0
-        else:
-            count += 1
-            reverse[i] = count
-
-    y = reverse[::-1]
-    final = " ".join(map(str, list(map(min, tuple(zip(result, y))))))
-    return final
+            numbers[i] = count
+    return numbers
 
 
 def read_input():
-    n = int(input())
-    numbers = input().split()
-    reverse = list(reversed(numbers))
-    return n, numbers, reverse
+    n = int(sys.stdin.readline())
+    numbers = sys.stdin.readline().split()
+    rev_num = numbers[::-1]
+    return n, numbers, rev_num
 
 
 if __name__ == '__main__':
-    n, numbers, reverse = read_input()
-    print(lentozero(n, numbers, reverse))
+    n, numbers, rev_num = read_input()
+    merged_list = tuple(zip(
+        lentozero(n, numbers), reversed(
+            lentozero(n, rev_num))))
+    print(" ".join(map(str, list(map(min, merged_list)))))

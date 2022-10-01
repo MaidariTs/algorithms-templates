@@ -1,16 +1,15 @@
-# ID 71031750
+# ID 71054364
 def sleight_of_hand(k: int, matrix: str) -> int:
     k = k*2
-    dict_count = {}
     count = 0
+    dict_count = {}
     for i in matrix:
         if i in dict_count:
             dict_count[i] += 1
         else:
             dict_count[i] = 1
-    val = list(dict_count.values())
-    for i in range(len(val)):
-        if val[i] <= k:
+    for i in dict_count.values():
+        if i <= k:
             count += 1
     return count
 
