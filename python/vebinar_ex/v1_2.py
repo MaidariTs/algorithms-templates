@@ -10,7 +10,7 @@ def solution(f_in, f_out):
         for i, k in zip(log[::2], log[1::2]):
             a[i-1:k] = [1]*(k-i+1)
         d.append(a)
-    
+
     asd = [sum(col) == f_in for col in zip(*d)]
     result = []
     for s, y in groupby(enumerate(asd, 1), lambda x: x[1]):
@@ -25,4 +25,3 @@ def solution(f_in, f_out):
 if __name__ == "__main__":
     import sys
     solution(int(input()), sys.stdout)
-
