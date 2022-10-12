@@ -1,19 +1,19 @@
-# 71742783
+# 71876831
 from typing import List
 
 
 class Stack:
     def __init__(self):
-        self.items = []
-
-    # def isEmpty(self):
-    #     return self.items == []
+        self._items = []
 
     def push(self, item):
-        self.items.append(int(item))
+        self._items.append(int(item))
 
     def pop(self):
-        return self.items.pop()
+        try:
+            return self._items.pop()
+        except IndexError:
+            raise IndexError('Пустой стек')
 
 
 def read_input():
@@ -34,7 +34,7 @@ def calc(seq: List[str]) -> int:
             stack.push(int(i))
         except Exception:
             stack.push(dictionary[i](stack.pop(), stack.pop()))
-    return stack.items[len(stack.items) - 1]
+    return stack._items[len(stack._items) - 1]
 
 
 if __name__ == '__main__':
