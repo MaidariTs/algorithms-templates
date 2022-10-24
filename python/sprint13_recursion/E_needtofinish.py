@@ -6,7 +6,7 @@ from typing import List
 # prices - стоимость каждого из n домов
 def max_quantity(n: int, k: int, prices: List[int]) -> int:
     max_q = 0
-    if 
+    # if
 
 
 def read_input():
